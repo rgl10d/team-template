@@ -10,18 +10,66 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const employeeArray = [];
+let currentQuestions = [];
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
-const newMember = 
-    inquirer.prompt([
-        {
-            type: "list",
-            message: "Select a type of employee to add.",
-            choices: ["Manager", "Engineer", "Intern", "Finish"],
-            name: "newMember"
-        }
-    ]).then((answer) => {
+const newMemberQuestion = [
+    {
+        type: "list",
+        message: "Select a type of employee to add.",
+        choices: ["Manager", "Engineer", "Intern", "Finish"],
+        name: "newMember"
+    }
+];
+
+const employeeQuestions = [
+    {
+        type: "input",
+        message: "What is the employee's name?",
+        name: "name"
+    },
+    {
+        type: "input",
+        message: "What is the employee's ID?",
+        name: "id"
+    },
+    {
+        type: "input",
+        message: "What is the employee's email address?",
+        name: "email"
+    },
+];
+
+const managerQuestion = [
+    {
+        type: "input",
+        message: "What is manager's office number?",
+        name: "officeNumber"
+    }
+];
+
+const engineerQuestion = [
+    {
+        type: "input",
+        message: "What is the engineer's GitHub URL?",
+        name: "github"
+    }
+];
+
+const internQuestion = [
+    {
+        type: "input",
+        message: "What school does the intern attend?",
+        name: "school"
+    }
+];
+
+
+const newMember = () => {
+    inquirer.prompt(newMemberQuestion).then((answer) => {
         console.log(answer);
+        currentQuestions = [];
         if(answer.newMember === "Manager"){
             console.log("Manger")
         } else if (answer.newMember === "Engineer"){
@@ -31,6 +79,12 @@ const newMember =
         } else {
             console.log("Finish")
         }
+    });
+}
+
+const newManager =
+    inquirer.prompt(employeeQuestions).then((answers) => {
+
     });
 
 // After the user has input all employees desired, call the `render` function (required
