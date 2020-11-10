@@ -11,9 +11,8 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
 
 const employeeArray = [];
-let currentQuestions = [];
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
+
+
 const newMemberQuestion = [
     {
         type: "list",
@@ -69,24 +68,55 @@ const internQuestion = [
 const newMember = () => {
     inquirer.prompt(newMemberQuestion).then((answer) => {
         console.log(answer);
-        currentQuestions = [];
         if(answer.newMember === "Manager"){
-            console.log("Manger")
+            addManager();
         } else if (answer.newMember === "Engineer"){
-            console.log("Engineer")
+            addEngineer();
         } else if (answer.newMember === "Intern"){
-            console.log("Intern")
+            addIntern();
         } else {
             console.log("Finish")
         }
     });
 }
 
-const newManager =
-    inquirer.prompt(employeeQuestions).then((answers) => {
-
+const addManager = () => {
+    // Ask general employee questions first
+    inquirer.prompt(employeeQuestions).then((employeeAnswers) => {
+        // Ask manager specifc question
+        inquirer.prompt(managerQuestion).then((managerAnswer) => {
+            // Merges the two answer sets into one object
+            Object.assign(employeeAnswers, managerAnswer)
+            console.log(employeeAnswers);
+        });
     });
+}
 
+const addEngineer = () => {
+    // Ask general employee questions first
+    inquirer.prompt(employeeQuestions).then((employeeAnswers) => {
+        // Ask engineer specifc question
+        inquirer.prompt(engineerQuestion).then((engineerAnswer) => {
+            // Merges the two answer sets into one object
+            Object.assign(employeeAnswers, engineerAnswer)
+            console.log(employeeAnswers);
+        });
+    });
+}
+
+const addIntern = () => {
+    // Ask general employee questions first
+    inquirer.prompt(employeeQuestions).then((employeeAnswers) => {
+        // Ask intern specifc question
+        inquirer.prompt(internQuestion).then((internAnswer) => {
+            // Merges the two answer sets into one object
+            Object.assign(employeeAnswers, internAnswer)
+            console.log(employeeAnswers);
+        });
+    });
+}
+
+newMember();
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
