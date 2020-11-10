@@ -67,7 +67,6 @@ const internQuestion = [
 
 const newMember = () => {
     inquirer.prompt(newMemberQuestion).then((answer) => {
-        console.log(answer);
         if(answer.newMember === "Manager"){
             addManager();
         } else if (answer.newMember === "Engineer"){
@@ -75,7 +74,7 @@ const newMember = () => {
         } else if (answer.newMember === "Intern"){
             addIntern();
         } else {
-            console.log("Finish")
+            console.log(employeeArray);
         }
     });
 }
@@ -87,7 +86,8 @@ const addManager = () => {
         inquirer.prompt(managerQuestion).then((managerAnswer) => {
             // Merges the two answer sets into one object
             Object.assign(employeeAnswers, managerAnswer)
-            console.log(employeeAnswers);
+            employeeArray.push(employeeAnswers);
+            newMember();
         });
     });
 }
@@ -99,7 +99,8 @@ const addEngineer = () => {
         inquirer.prompt(engineerQuestion).then((engineerAnswer) => {
             // Merges the two answer sets into one object
             Object.assign(employeeAnswers, engineerAnswer)
-            console.log(employeeAnswers);
+            employeeArray.push(employeeAnswers);
+            newMember();
         });
     });
 }
@@ -111,7 +112,8 @@ const addIntern = () => {
         inquirer.prompt(internQuestion).then((internAnswer) => {
             // Merges the two answer sets into one object
             Object.assign(employeeAnswers, internAnswer)
-            console.log(employeeAnswers);
+            employeeArray.push(employeeAnswers);
+            newMember();
         });
     });
 }
