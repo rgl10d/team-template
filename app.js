@@ -77,7 +77,6 @@ const newMember = () => {
             addIntern();
         } else {
             // Ends the loop and writes to an HTML page
-            console.log(employees);
             fs.writeFile(outputPath, render(employees), (err) => {
                 if (err) throw err;
                 console.log('Team page created!');
@@ -91,9 +90,9 @@ const addManager = () => {
     inquirer.prompt(employeeQuestions).then((employeeAnswers) => {
         // Ask manager specifc question
         inquirer.prompt(managerQuestion).then((managerAnswer) => {
-            // Merges the two answer sets into one object
-            Object.assign(employeeAnswers, managerAnswer)
-            employees.push(employeeAnswers);
+            // Runs answers through Manager constructor and pushes them to the employee array
+            const manager = new Manager(employeeAnswers.name, employeeAnswers.id, employeeAnswers.email, managerAnswer.officeNumber);
+            employees.push(manager);
             newMember();
         });
     });
@@ -104,9 +103,9 @@ const addEngineer = () => {
     inquirer.prompt(employeeQuestions).then((employeeAnswers) => {
         // Ask engineer specifc question
         inquirer.prompt(engineerQuestion).then((engineerAnswer) => {
-            // Merges the two answer sets into one object
-            Object.assign(employeeAnswers, engineerAnswer)
-            employees.push(employeeAnswers);
+            // Runs answers through Engineer constructor and pushes them to the employee array
+            const engineer = new Engineer(employeeAnswers.name, employeeAnswers.id, employeeAnswers.email, engineerAnswer.github);
+            employees.push(engineer);
             newMember();
         });
     });
@@ -117,9 +116,9 @@ const addIntern = () => {
     inquirer.prompt(employeeQuestions).then((employeeAnswers) => {
         // Ask intern specifc question
         inquirer.prompt(internQuestion).then((internAnswer) => {
-            // Merges the two answer sets into one object
-            Object.assign(employeeAnswers, internAnswer)
-            employees.push(employeeAnswers);
+            // Runs answers through Intern constructor and pushes them to the employee array
+            const intern = new Intern(employeeAnswers.name, employeeAnswers.id, employeeAnswers.email, internAnswer.school);
+            employees.push(intern);
             newMember();
         });
     });
