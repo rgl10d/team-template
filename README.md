@@ -5,12 +5,12 @@
 The Team Template Generator creates a ready-made html file for your coding team. It takes in the information you provide on your team members through various inquirer questions.
 
 Technologies used:
-    - JavaScript
-    - jQuery
-    - NodeJS
-    - Modules
-    - Inquirer NPM
-    - Constructors & Constructor Classes
+- JavaScript
+- jQuery
+- NodeJS
+- Modules
+- Inquirer NPM
+- Constructors & Constructor Classes
 
 ## Table of Contents
 
@@ -30,9 +30,9 @@ To download the Inquirer NPM, navigate to the folder that contains this code, op
 
 ## Usage 
 
-DEMO VIDEO:
+DEMO VIDEO: https://drive.google.com/file/d/19SnGifOM0NT5zwv5ZCLkiDujRhnwkjY7/view
 
-Use your terminal application of choice, navigate to the folder that contains this code and run 'node app.js'. The terminal will then continue to ask a series of questions indfinitely until the "Finish and create team page" option is chosen on the team-member-choosing question. All of your answerse will then be applied to an HTML page, styled and placed in the output folder.
+Use your terminal application of choice, navigate to the folder that contains this code and run 'node app.js'. The terminal will then continue to ask a series of questions indfinitely until the "Finish and create team page" option is chosen on the team-member-choosing question. All of your answerse will then be applied to an HTML page, styled and placed in the output folder
 ## Questions?
 
 Visit me at my GitHub page: https://www.github.com/rgl10d
